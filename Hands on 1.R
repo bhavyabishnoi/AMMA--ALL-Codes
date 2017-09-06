@@ -1,0 +1,27 @@
+##########Part 1############
+library(data.table)
+library(help="data.table")
+library(datasets.load)
+library(datasets)
+library(help="datasets")
+library(gmodels)
+women<- women
+avg_height<- mean(women$height)
+avg_weight<-mean(women$weight)
+women$height_greater<-ifelse(women$height>avg_height,TRUE,FALSE)
+women$weight_lesser<- ifelse(women$weight<avg_weight,TRUE,FALSE)
+CrossTable(women$height_greater,women$weight_lesser)
+table(women$height_greater,women$weight_lesser)
+View(data.table)
+############Part2##############
+install.packages("rvest")
+install.packages("xml2")
+install.packages("XML")
+library("xml2")
+library("rvest")
+library("XML")
+link = "http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
+city_file=read_html(link)
+city_table=html_nodes(city_file,"table")
+city_finaltable<-html_table(city_table[1],fill=TRUE)
+View(city_finaltable)
